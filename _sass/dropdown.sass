@@ -1,5 +1,8 @@
 @import "minima"
 
+$dropdown-width: 160px
+$base-padding: 5px
+
 .dropdown
     position: relative
     display: inline-block
@@ -7,26 +10,38 @@
 .dropdown-content
     position: absolute
     display: none
-    min-width: 160px
-    padding: 5px 0
+    width: $dropdown-width
+    padding: $base-padding 0
 
-    a
+    .dropdown-item
         display: block
         background-color: $grey-color-light
-        padding: 5px 10px
-    
-    a:hover
+        padding: $base-padding $base-padding * 2
+        word-wrap: break-word
+
+    .dropdown-item:hover
         background-color: darken($grey-color-light, 5%)
 
 .dropdown-content:hover
     display: block
 
+.dropdown-content > .dropdown
+    width: $dropdown-width
+
 .dropdown:hover .dropdown-content
+    display: block
+
+.dropdown-content > .dropdown > .dropdown-content
+    display: none
+    left: $dropdown-width
+    top: -$base-padding
+
+.dropdown-content > .dropdown:hover > .dropdown-content
     display: block
 
 @media screen and ( max-width: 800px )
     .dropdown-content
-        min-width: auto
+        width: auto
         display: block
         position: static
 

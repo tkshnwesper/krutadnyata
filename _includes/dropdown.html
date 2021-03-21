@@ -1,10 +1,15 @@
 {%- for menu_item in site.translations[site.lang].menu -%}
-    {% assign label = menu_item.label %}
     <div class="dropdown page-link">
         <span>{{ menu_item.label }}</span>
         <div class="dropdown-content">
             {% for dropdown in menu_item.dropdowns %}
-                <a href="{{ dropdown.url }}">{{ dropdown.label }}</a>
+                {% if dropdown.dropdowns %}
+                    {% assign dropdowns = dropdown.dropdowns %}
+                    {% assign path = dropdown.url %}
+                    {% include sub-dropdown.html %}
+                {% else %}
+                    <a class="dropdown-item" href="{{ dropdown.url }}">{{ dropdown.label }}</a>
+                {% endif %}
             {% endfor %}
         </div>
     </div>

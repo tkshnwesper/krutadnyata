@@ -1,0 +1,14 @@
+<div class="dropdown">
+    <span class="dropdown-item">{{ dropdown.label }}</span>
+    <div class="dropdown-content">
+        {% for dropdown in dropdowns %}
+            {% if dropdown.dropdowns %}
+                {% assign dropdowns = dropdown.dropdowns %}
+                {% capture path %}{{ path }}/{{ dropdown.url }}{% endcapture %}
+                {% include sub-dropdown.html %}
+            {% else %}
+                <a class="dropdown-item" href="{{ path }}/{{ dropdown.url }}">{{ dropdown.label }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
