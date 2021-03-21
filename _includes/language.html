@@ -1,7 +1,11 @@
 {% for lang in site.languages %}
-{% if site.lang != lang %}
-{% capture link %}{{ site.baseurl_root }}/{{ lang }}{{ page.url }}{% endcapture %}
-{% capture text %}strings.languages.{{ lang }}{% endcapture %}
-<a href="{{ link }}">{% t text %}</a>
-{% endif %}
+  {% if site.lang != lang %}
+    {% if site.languages[0] == lang %}
+      {% capture link %}{{ site.baseurl_root }}{{ page.url }}{% endcapture %}
+    {% else %}
+      {% capture link %}{{ site.baseurl_root }}/{{ lang }}{{ page.url }}{% endcapture %}
+    {% endif %}
+    {% capture text %}strings.languages.{{ lang }}{% endcapture %}
+    <a href="{{ link }}">{% t text %}</a>
+  {% endif %}
 {% endfor %}
