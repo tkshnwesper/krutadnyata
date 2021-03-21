@@ -39,6 +39,7 @@ languages:
   - en
   - म
 
+default_locale_in_subfolder: true
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
