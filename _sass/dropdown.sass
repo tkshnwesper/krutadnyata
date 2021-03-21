@@ -1,0 +1,38 @@
+@import "minima"
+
+.dropdown
+    position: relative
+    display: inline-block
+
+.dropdown-content
+    position: absolute
+    display: none
+    min-width: 160px
+    padding: 5px 0
+
+    a
+        display: block
+        background-color: $grey-color-light
+        padding: 5px 10px
+    
+    a:hover
+        background-color: darken($grey-color-light, 5%)
+
+.dropdown-content:hover
+    display: block
+
+.dropdown:hover .dropdown-content
+    display: block
+
+@media screen and ( max-width: 800px )
+    .dropdown-content
+        min-width: auto
+        display: block
+        position: static
+
+        a
+            background-color: inherit
+
+    .dropdown
+        position: static
+        display: block
